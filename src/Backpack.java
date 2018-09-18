@@ -3,112 +3,104 @@
  *    Level 1
  */
 
-public class Backpack
-{
+public class Backpack {
 	private Pencil pencil;
 	private Ruler ruler;
 	private Textbook textbook;
 
-	private void packAndCheck()
-	{
+	public Backpack(Pencil pencil, Ruler ruler, Textbook textbook) {
+		this.pencil = pencil;
+		this.ruler = ruler;
+		this.textbook = textbook;
+	}
+
+	public void packAndCheck() {
 		// Your mission is to go to school.
-		// 1. First you need to put all your supplies into your backpack - use the putInBackpack(...) methods
+		// 1. First you need to put all your supplies into your backpack - use the
+		// putInBackpack(...) methods
 
 		goToSchool();
 	}
 
 	public static void main(String[] args)
-	{
-		new Backpack().packAndCheck();
+	{	Ruler ruler =new Ruler();
+	Pencil pencil=new Pencil();
+	Textbook textbook= new Textbook();
+		Backpack backypacky= new Backpack(pencil, ruler, textbook);
+		backypacky.putInBackpack(pencil);
+		backypacky.putInBackpack(ruler);
+		backypacky.putInBackpack(textbook);
+		backypacky.packAndCheck();
 	}
 
-	public void putInBackpack(Pencil supply)
-	{
+	public void putInBackpack(Pencil supply) {
 		this.pencil = supply;
 		log(supply);
 	}
 
-	public void putInBackpack(Ruler supply)
-	{
+	public void putInBackpack(Ruler supply) {
 		this.ruler = supply;
 		log(supply);
 	}
 
-	public void putInBackpack(Textbook supply)
-	{
+	public void putInBackpack(Textbook supply) {
 		this.textbook = supply;
 		log(supply);
 	}
 
-	private void log(Supply supply)
-	{
+	private void log(Supply supply) {
 		String description;
-		if (supply == null)
-		{
+		if (supply == null) {
 			description = "null";
-		} else
-		{
+		} else {
 			description = supply.getClass().getSimpleName().toLowerCase();
 		}
 
 		System.out.println("You put " + description + " in your Backpack");
 	}
 
-	public void goToSchool()
-	{
-		if (pencil == null || ruler == null || textbook == null)
-		{
-			System.out.println("ERROR: You are not ready for School!");
-		} else
-		{
+	public void goToSchool() {
+		if (pencil == null || ruler == null || textbook == null) {
+			System.out.println("You are not ready for School! You must of forgoten something!");
+		} else {
 			System.out.println("Congratulations! You are ready for school");
 		}
 	}
 }
 
-abstract class Supply
-{
+abstract class Supply {
 	protected String name;
 }
 
-class Pencil extends Supply
-{
-	Pencil()
-	{
+class Pencil extends Supply {
+	Pencil() {
 		this.name = "pencil";
 		System.out.println("You got your pencil!");
 	}
 
-	public void write(String writing)
-	{
+	public void write(String writing) {
 		System.out.println(writing);
 	}
 }
 
-class Ruler extends Supply
-{
-	Ruler()
-	{
+class Ruler extends Supply {
+	Ruler() {
 		this.name = "ruler";
 		System.out.println("You found your ruler!!");
 	}
 
-	public void measure()
-	{
+	public void measure() {
 		System.out.println("Now you can measure your mouse!");
 	}
 }
 
-class Textbook extends Supply
-{
-	Textbook()
-	{
+class Textbook extends Supply {
+	Textbook() {
 		this.name = "textbook";
 		System.out.println("You got your boring textbook");
 	}
 
-	public void read()
-	{
+	public void read() {
 		System.out.println("The history of Iceland is long and interesting");
 	}
 }
